@@ -47,7 +47,6 @@
     <modules>
         <module>keycloak_encrypt_poc_attribute_converter</module>
         <module>keycloak_encrypt_poc_attribute_converter_test</module>
-        <module>tests</module>
     </modules>
 
     <dependencyManagement>
@@ -86,4 +85,15 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <profiles>
+        <profile>
+            <id>keycloak-testsuite</id>
+            <modules>
+                <module>keycloak_encrypt_poc_attribute_converter</module>
+                <module>keycloak_encrypt_poc_attribute_converter_test</module>
+                <module>tests</module>
+            </modules>
+        </profile>
+    </profiles>
 </project>

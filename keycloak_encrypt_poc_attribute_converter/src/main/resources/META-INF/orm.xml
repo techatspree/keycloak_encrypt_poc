@@ -1,22 +1,21 @@
 <entity-mappings version="3.1"
                  xmlns="https://jakarta.ee/xml/ns/persistence/orm">
 
-
     <entity class="org.keycloak.models.jpa.entities.UserEntity">
         <convert
-                converter="de.spree.keycloak.data_encrypt.SimpleBase64StringConverter"
+                converter="de.spree.keycloak.data_encrypt.AES256StringConverter"
                 attribute-name="username"/>
         <convert
-                converter="de.spree.keycloak.data_encrypt.SimpleBase64StringConverter"
+                converter="de.spree.keycloak.data_encrypt.AES256StringConverter"
                 attribute-name="firstName"/>
         <convert
-                converter="de.spree.keycloak.data_encrypt.SimpleBase64StringConverter"
+                converter="de.spree.keycloak.data_encrypt.AES256StringConverter"
                 attribute-name="lastName"/>
         <convert
-                converter="de.spree.keycloak.data_encrypt.SimpleBase64StringConverter"
+                converter="de.spree.keycloak.data_encrypt.AES256StringConverter"
                 attribute-name="email"/>
         <convert
-                converter="de.spree.keycloak.data_encrypt.SimpleBase64StringConverter"
+                converter="de.spree.keycloak.data_encrypt.AES256StringConverter"
                 attribute-name="emailConstraint"/>
     </entity>
 </entity-mappings>
