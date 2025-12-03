@@ -10,7 +10,10 @@ import org.keycloak.testframework.realm.UserConfigBuilder;
 import org.keycloak.testframework.server.KeycloakServerConfig;
 import org.keycloak.testframework.server.KeycloakServerConfigBuilder;
 
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 
 @KeycloakIntegrationTest(config = UserWithEncryptionTest.ServerConfig.class)
@@ -78,6 +81,16 @@ public class UserWithEncryptionTest {
         assertThat(realm.admin().users().search("Use", null, null), hasSize(0));
         assertThat(realm.admin().users().search("Use*", null, null), hasSize(0));
         assertThat(realm.admin().users().search("Us*e", null, null), hasSize(0));
+    }
+
+    @Test
+    public void createUserWithLastNameAbove256CharactersShouldFail() {
+        String lastNameExceeds256Chars = "lastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLonglastNameTooLong";
+        createUser("User", "password", "firstName",
+                lastNameExceeds256Chars,
+                "user@example.com");
+        // User creation failed, no User can be found
+        assertThat(realm.admin().users().search("User", true), hasSize(0));
     }
 
 

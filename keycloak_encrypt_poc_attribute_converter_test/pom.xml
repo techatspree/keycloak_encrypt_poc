@@ -36,10 +36,6 @@
         </license>
     </licenses>
 
-    <properties>
-        <version.compiler.maven.plugin>3.5.1</version.compiler.maven.plugin>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>de.spree.keycloak</groupId>
